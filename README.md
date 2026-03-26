@@ -30,6 +30,16 @@ Bearie Land la mot website game mini phong cach gau bong de thuong, su dung HTML
 
 Du an la static site, mo truc tiep file index.html trong trinh duyet la co the choi.
 
+## Ban online (GitHub Pages)
+
+- URL du kien: https://dybinh2k5.github.io/Bearie-Land/
+- Trang duoc deploy tu nhanh main bang GitHub Actions workflow `Deploy GitHub Pages`.
+
+## Release
+
+- Ban release dau tien: `v1.0.0`
+- Tag release duoc day len remote de theo doi moc phat hanh.
+
 ## Ghi chu
 
 - Du lieu game duoc luu trong localStorage trinh duyet.

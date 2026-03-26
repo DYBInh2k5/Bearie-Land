@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bearie Land - Góc Gấu Bông Dễ Thương</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-glow bg-glow-left"></div>
+  <div class="bg-glow bg-glow-right"></div>
+
+  <header class="hero">
+    <nav class="topbar">
+      <div class="brand">
+        <span class="brand-bear" aria-hidden="true">🧸</span>
+        <span class="brand-name">Bearie Land</span>
+      </div>
+      <button class="music-btn" id="musicBtn" type="button">Bật nhạc dịu nhẹ</button>
+    </nav>
+
+    <section class="hero-content reveal">
+      <div class="hero-layout">
+        <div>
+          <p class="eyebrow">Thế giới bông mềm cho nàng</p>
+          <h1>Ngọt như kẹo, mềm như gấu bông</h1>
+          <p class="subtitle">
+            Một góc nhỏ thật xinh với nơ, tim và những chú gấu đáng yêu để chill sau ngày dài.
+          </p>
+          <div class="theme-picker" id="themePicker" aria-label="chon giao dien theo mua">
+            <span class="theme-label">Skin:</span>
+            <button class="theme-chip active" type="button" data-theme="spring">Kẹo Ngọt</button>
+            <button class="theme-chip" type="button" data-theme="noel">Noel</button>
+            <button class="theme-chip" type="button" data-theme="valentine">Valentine</button>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#collection">Xem bộ sưu tập</a>
+            <a class="btn btn-ghost" href="#games">Mini game gấu</a>
+          </div>
+        </div>
+
+        <figure class="hero-photo-frame">
+          <img
+            class="hero-photo"
+            src="653523367_1480381450119567_8715379737977280686_n.jpg"
+            alt="Hinh co gai de thuong"
+          />
+          <figcaption>Nang tho cua Bearie Land</figcaption>
+        </figure>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="collection" class="collection reveal">
+      <h2>Gấu bông hôm nay</h2>
+      <p class="section-copy">Chọn một bé và nhấn vào tim để thả thính nhẹ.</p>
+      <div class="card-grid">
+        <article class="bear-card" data-name="Misu">
+          <div class="bear-face">ʕ •ᴥ•ʔ</div>
+          <h3>Misu Latte</h3>
+          <p>Màu kem sữa, ôm vào là thấy yên tâm.</p>
+          <button class="heart-btn" type="button" aria-label="thả tim cho Misu">♡</button>
+        </article>
+
+        <article class="bear-card" data-name="Nabi">
+          <div class="bear-face">ʕ´• ᴥ•̥`ʔ</div>
+          <h3>Nabi Ribbon</h3>
+          <p>Đeo nơ hồng, chuyên trị nỗi buồn buổi tối.</p>
+          <button class="heart-btn" type="button" aria-label="thả tim cho Nabi">♡</button>
+        </article>
+
+        <article class="bear-card" data-name="Pipi">
+          <div class="bear-face">ʕ•ﻌ•ʔ</div>
+          <h3>Pipi Honey</h3>
+          <p>Ngọt như mật ong, hợp để ôm khi xem phim.</p>
+          <button class="heart-btn" type="button" aria-label="thả tim cho Pipi">♡</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="love-notes" class="love-notes reveal">
+      <h2>Hộp lời nhắn ngọt</h2>
+      <p class="section-copy">Mỗi lần bấm sẽ hiện một câu đáng yêu mới.</p>
+      <div class="note-box" id="noteBox">Em xứng đáng với những điều dịu dàng nhất.</div>
+      <button class="btn btn-primary" id="noteBtn" type="button">Nhận lời nhắn mới</button>
+    </section>
+
+    <section id="games" class="games reveal">
+      <h2>Mini Game Gấu Bông</h2>
+      <p class="section-copy">Chơi nhanh 2 trò nhỏ siu đáng yêu ngay dưới đây.</p>
+      <button class="btn btn-ghost sfx-btn" id="sfxBtn" type="button">Am thanh game: Bat</button>
+      <p class="coin-hud">Honey Coin: <strong id="coinBalance">0</strong> 🍯</p>
+      <p class="streak-hud">Streak: <strong id="streakCount">0</strong> ngay | Multiplier: <strong id="streakMultiplier">x1</strong></p>
+
+      <div class="game-grid">
+        <article class="game-card">
+          <h3>Bắt Gấu 15 Giây</h3>
+          <p class="game-copy">Bấm thật nhanh vào chú gấu xuất hiện để ghi điểm. Mỗi vài điểm sẽ lên cấp và game chạy nhanh hơn.</p>
+          <div class="game-status">
+            <span>Điểm: <strong id="catchScore">0</strong></span>
+            <span>Thời gian: <strong id="catchTime">15</strong>s</span>
+            <span>Cap do: <strong id="catchLevel">1</strong></span>
+            <span>Ky luc: <strong id="catchHighScore">0</strong></span>
+          </div>
+          <button class="btn btn-primary" id="startCatchGame" type="button">Bắt đầu</button>
+          <button class="catch-target" id="catchTarget" type="button" disabled>🧸</button>
+          <p class="game-result" id="catchResult">Nhấn bắt đầu để chơi.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Đoán Số May Mắn Của Gấu</h3>
+          <p class="game-copy">Chọn số từ 1 đến 5 để đoán bí mật của bé gấu.</p>
+          <label class="guess-label" for="guessInput">Số bạn chọn</label>
+          <input id="guessInput" class="guess-input" type="number" min="1" max="5" placeholder="1-5" />
+          <button class="btn btn-primary" id="guessBtn" type="button">Đoán ngay</button>
+          <p class="game-result" id="guessResult">Biết đâu bạn là nàng may mắn nhất hôm nay.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Mix Do Cho Gau Bong</h3>
+          <p class="game-copy">Keo-tha phu kien vao be gau, hoac bam nhanh tren dien thoai.</p>
+
+          <div class="dressup-stage" id="dressupStage" aria-label="khu vuc mac do cho gau">
+            <div class="dressup-bear">🧸</div>
+            <div class="equipped-item" id="equippedHat"></div>
+            <div class="equipped-item" id="equippedBow"></div>
+            <div class="equipped-item" id="equippedGlasses"></div>
+            <div class="equipped-item" id="equippedDress"></div>
+            <div class="equipped-item" id="equippedBag"></div>
+            <div class="equipped-item" id="equippedNecklace"></div>
+          </div>
+
+          <div class="accessory-row" id="accessoryRow">
+            <button class="accessory" type="button" draggable="true" data-slot="hat" data-icon="🎩" aria-label="mu gau">🎩</button>
+            <button class="accessory" type="button" draggable="true" data-slot="hat" data-icon="🧢" aria-label="non gau">🧢</button>
+            <button class="accessory" type="button" draggable="true" data-slot="bow" data-icon="🎀" aria-label="no gau">🎀</button>
+            <button class="accessory" type="button" draggable="true" data-slot="bow" data-icon="🌸" aria-label="hoa gau">🌸</button>
+            <button class="accessory" type="button" draggable="true" data-slot="glasses" data-icon="🕶" aria-label="kinh gau">🕶</button>
+            <button class="accessory" type="button" draggable="true" data-slot="glasses" data-icon="👓" aria-label="kinh trong">👓</button>
+            <button class="accessory" type="button" draggable="true" data-slot="dress" data-icon="👗" aria-label="vay gau">👗</button>
+            <button class="accessory" type="button" draggable="true" data-slot="dress" data-icon="🩷" aria-label="ao tim">🩷</button>
+            <button class="accessory" type="button" draggable="true" data-slot="bag" data-icon="👜" aria-label="tui gau">👜</button>
+            <button class="accessory" type="button" draggable="true" data-slot="bag" data-icon="🎒" aria-label="balo gau">🎒</button>
+            <button class="accessory" type="button" draggable="true" data-slot="necklace" data-icon="📿" aria-label="vong co">📿</button>
+            <button class="accessory" type="button" draggable="true" data-slot="necklace" data-icon="💎" aria-label="mat day">💎</button>
+            <button class="accessory event-accessory" id="eventAccessory" type="button" draggable="true" data-slot="necklace" data-icon="🍬" aria-label="vat pham su kien">🍬</button>
+            <button class="btn btn-primary random-dress" id="randomDress" type="button">Random outfit</button>
+            <button class="btn btn-ghost clear-dress" id="clearDress" type="button">Xoa do</button>
+          </div>
+
+          <p class="game-result" id="dressupResult">Tip: Thu keo tha phu kien de tao style rieng.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Thanh Tich Hom Nay</h3>
+          <p class="game-copy">Theo doi so lieu cho ngay hien tai de xem do "cham gau" cua ban.</p>
+          <div class="daily-stats" id="dailyStats">
+            <p>Lan choi bat gau: <strong id="statCatchPlays">0</strong></p>
+            <p>Diem cao nhat hom nay: <strong id="statCatchBest">0</strong></p>
+            <p>Luot doan so: <strong id="statGuessPlays">0</strong></p>
+            <p>Doan dung: <strong id="statGuessWins">0</strong></p>
+            <p>Lan doi outfit: <strong id="statDressChanges">0</strong></p>
+          </div>
+        </article>
+
+        <article class="game-card event-card">
+          <h3>Event Theo Dip</h3>
+          <p class="game-copy">Skin hien tai: <strong id="eventThemeName">Keo Ngot</strong> - hoan thanh nhiem vu ngay de nhan qua.</p>
+          <ul class="mission-list" id="missionList">
+            <li id="missionCatch">Dat diem bat gau hom nay >= 20</li>
+            <li id="missionGuess">Doan dung so may man >= 2 lan</li>
+            <li id="missionDress">Doi outfit >= 5 lan</li>
+          </ul>
+          <button class="btn btn-primary claim-btn" id="claimRewardBtn" type="button" disabled>Nhan qua hom nay</button>
+          <p class="game-result" id="eventRewardStatus">Hay hoan thanh 3 nhiem vu de nhan item su kien.</p>
+        </article>
+
+        <article class="game-card weekly-card">
+          <h3>Nhiem Vu Tuan</h3>
+          <p class="game-copy">Reset moi tuan de san huy hieu hiem va qua bonus.</p>
+          <ul class="mission-list" id="weeklyMissionList">
+            <li id="weeklyMissionCatch">Tong diem bat gau trong tuan >= 120</li>
+            <li id="weeklyMissionGuess">Doan dung so may man trong tuan >= 12</li>
+            <li id="weeklyMissionDress">Doi outfit trong tuan >= 30</li>
+          </ul>
+          <button class="btn btn-primary claim-btn" id="claimWeeklyBtn" type="button" disabled>Nhan qua tuan</button>
+          <p class="game-result" id="weeklyRewardStatus">Tich luy ca tuan de nhan qua sieu hiem.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Kho Qua Da Nhan</h3>
+          <p class="game-copy">Luu lai cac mon qua ban da mo khoa tu event ngay va tuan.</p>
+          <div class="inventory" id="rewardInventory"></div>
+        </article>
+
+        <article class="game-card">
+          <h3>Huy Hieu Thanh Tich</h3>
+          <p class="game-copy">Mo khoa theo ky luc bat gau cao nhat cua ban.</p>
+          <div class="badges" id="badgeBoard">
+            <span class="badge" id="badgeBronze">Bronze Paw</span>
+            <span class="badge" id="badgeSilver">Silver Hug</span>
+            <span class="badge" id="badgeGold">Gold Crown</span>
+          </div>
+          <p class="game-result" id="badgeStatus">Dat diem cao hon de mo khoa huy hieu tiep theo.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Vong Quay May Man</h3>
+          <p class="game-copy">Moi ngay quay de nhan thuong ngau nhien cho gau bong.</p>
+          <div class="wheel-wrap">
+            <div class="wheel" id="luckyWheel">🎡</div>
+          </div>
+          <button class="btn btn-primary" id="spinWheelBtn" type="button">Quay ngay</button>
+          <p class="game-result" id="spinResult">Nhan nut de quay thu van may!</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Cham Soc Be Gau</h3>
+          <p class="game-copy">Cho an, cho ngu hoac choi cung be gau de tang tam trang.</p>
+          <div class="mood-box">
+            <p>Tam trang: <strong id="bearMood">70</strong>/100</p>
+            <div class="mood-bar">
+              <span id="moodFill"></span>
+            </div>
+          </div>
+          <div class="care-actions">
+            <button class="btn btn-ghost" id="feedBearBtn" type="button">Cho an</button>
+            <button class="btn btn-ghost" id="sleepBearBtn" type="button">Cho ngu</button>
+            <button class="btn btn-ghost" id="playBearBtn" type="button">Choi cung gau</button>
+          </div>
+          <p class="game-result" id="careResult">Be gau dang doi ban cham soc ne.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Ban Than Cua Gau</h3>
+          <p class="game-copy">Nuoi them be tho bong de doi game center vui hon.</p>
+          <div class="mood-box">
+            <p>Tho bong: <strong id="buddyMood">65</strong>/100</p>
+            <div class="mood-bar">
+              <span id="buddyMoodFill"></span>
+            </div>
+          </div>
+          <div class="care-actions">
+            <button class="btn btn-ghost" id="feedBuddyBtn" type="button">Ca rot</button>
+            <button class="btn btn-ghost" id="sleepBuddyBtn" type="button">Nghi ngoi</button>
+            <button class="btn btn-ghost" id="playBuddyBtn" type="button">Choi dua</button>
+          </div>
+          <p class="game-result" id="buddyResult">Be tho dang rung tai cho ban day.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Lat The Gau Bong</h3>
+          <p class="game-copy">Tim cac cap giong nhau de nhan Honey Coin.</p>
+          <div class="memory-meta">
+            <span>Luot lat: <strong id="memoryMoves">0</strong></span>
+            <span>Cap dung: <strong id="memoryMatches">0</strong>/4</span>
+            <span>Combo: <strong id="memoryCombo">0</strong></span>
+          </div>
+          <div class="memory-board" id="memoryBoard"></div>
+          <button class="btn btn-primary" id="restartMemoryBtn" type="button">Choi lai</button>
+          <p class="game-result" id="memoryResult">Nhan Choi lai de bat dau van moi.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Puzzle Hinh Anh</h3>
+          <p class="game-copy">Xep lai anh co gai de thuong bang cach doi vi tri cac o.</p>
+          <div class="puzzle-meta">
+            <label for="puzzleDifficulty">Do kho</label>
+            <select id="puzzleDifficulty" class="puzzle-select">
+              <option value="3" selected>3x3</option>
+              <option value="4">4x4</option>
+            </select>
+            <span>Thoi gian: <strong id="puzzleTime">0</strong>s</span>
+            <span>Best: <strong id="puzzleBest">-</strong></span>
+          </div>
+          <div class="puzzle-board" id="puzzleBoard"></div>
+          <button class="btn btn-primary" id="restartPuzzleBtn" type="button">Tron lai puzzle</button>
+          <p class="game-result" id="puzzleResult">Chon 2 o de doi vi tri cho nhau.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Bat Sticker Anh</h3>
+          <p class="game-copy">Trong 15 giay, bam vao sticker anh xuat hien de ghi diem.</p>
+          <div class="game-status">
+            <span>Diem: <strong id="stickerScore">0</strong></span>
+            <span>Time: <strong id="stickerTime">15</strong>s</span>
+          </div>
+          <button class="btn btn-primary" id="startStickerBtn" type="button">Bat dau</button>
+          <div class="sticker-field" id="stickerField">
+            <button class="sticker-target" id="stickerTarget" type="button" aria-label="sticker target"></button>
+          </div>
+          <p class="game-result" id="stickerResult">Nhan Bat dau de choi.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Doan Goc Anh</h3>
+          <p class="game-copy">Nhin manh anh crop va doan no thuoc goc nao.</p>
+          <div class="crop-preview" id="cropPreview"></div>
+          <div class="quadrant-grid">
+            <button class="quadrant-btn" type="button" data-choice="TL">Tren trai</button>
+            <button class="quadrant-btn" type="button" data-choice="TR">Tren phai</button>
+            <button class="quadrant-btn" type="button" data-choice="BL">Duoi trai</button>
+            <button class="quadrant-btn" type="button" data-choice="BR">Duoi phai</button>
+          </div>
+          <p class="game-result" id="cropGuessResult">Doan dung se nhan coin.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Xoay Anh Dung Chieu</h3>
+          <p class="game-copy">Xoay anh ve dung chieu bang nut xoay 90 do.</p>
+          <div class="rotate-frame">
+            <img id="rotateImage" src="653523367_1480381450119567_8715379737977280686_n.jpg" alt="xoay anh" />
+          </div>
+          <div class="care-actions">
+            <button class="btn btn-ghost" id="rotateBtn" type="button">Xoay 90 do</button>
+            <button class="btn btn-primary" id="checkRotateBtn" type="button">Kiem tra</button>
+          </div>
+          <p class="game-result" id="rotateResult">Dua anh ve dung huong de nhan thuong.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Teddy Shop</h3>
+          <p class="game-copy">Doi qua bang Honey Coin va them vao kho qua da nhan.</p>
+          <div class="shop-grid" id="shopGrid">
+            <button class="shop-item" type="button" data-cost="25" data-reward="Sticker no 🎀">Sticker no 🎀 - 25</button>
+            <button class="shop-item" type="button" data-cost="40" data-reward="Vong sao ⭐">Vong sao ⭐ - 40</button>
+            <button class="shop-item" type="button" data-cost="60" data-reward="Gau mini 🧸">Gau mini 🧸 - 60</button>
+            <button class="shop-item" type="button" data-cost="90" data-reward="Hoang mien 👑">Hoang mien 👑 - 90</button>
+          </div>
+          <p class="game-result" id="shopResult">Mua qua de bo suu tap cua ban phong phu hon.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Ban Do Chuong</h3>
+          <p class="game-copy">Mo khoa tung chuong va nhan thuong bo sung.</p>
+          <div class="chapter-list" id="chapterList">
+            <button class="chapter-btn" id="chapter1Btn" type="button">Chuong 1: Ky luc bat gau >= 15</button>
+            <button class="chapter-btn" id="chapter2Btn" type="button">Chuong 2: Co it nhat 5 mon trong kho qua</button>
+            <button class="chapter-btn" id="chapter3Btn" type="button">Chuong 3: Tam trang gau >= 85 va tho >= 80</button>
+          </div>
+          <p class="game-result" id="chapterResult">Hoan thanh dieu kien de mo khoa chuong.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Local Leaderboard</h3>
+          <p class="game-copy">Thanh tich tot nhat trong trinh duyet cua ban.</p>
+          <div class="daily-stats">
+            <p>Diem bat gau cao nhat: <strong id="lbCatchBest">0</strong></p>
+            <p>Lat the it luot nhat: <strong id="lbMemoryBest">-</strong></p>
+            <p>So coin cao nhat tung dat: <strong id="lbCoinBest">0</strong></p>
+            <p>Coin tuan nay: <strong id="lbWeeklyCoin">0</strong></p>
+            <p>Coin thang nay: <strong id="lbMonthlyCoin">0</strong></p>
+          </div>
+          <p class="game-result" id="leaderboardHint">Cang choi nhieu, bang xep hang cang dep.</p>
+        </article>
+
+        <article class="game-card">
+          <h3>Mini Boss Cuoi Tuan</h3>
+          <p class="game-copy">Chi mo vao thu 7, chu nhat. Ha boss de nhan coin khung.</p>
+          <div class="boss-meta">
+            <span>Thoi gian: <strong id="bossTimer">10</strong>s</span>
+            <span>Hit: <strong id="bossHits">0</strong></span>
+          </div>
+          <button class="btn btn-primary" id="startBossBtn" type="button">Bat dau Boss</button>
+          <button class="boss-target" id="bossTarget" type="button" disabled>🐻‍❄️</button>
+          <p class="game-result" id="bossResult">Cho toi cuoi tuan de mo challenge dac biet.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer reveal">
+    <p>Made with soft hearts and teddy hugs.</p>
+  </footer>
+
+  <audio id="bgAudio" loop preload="none">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_a53e6f983f.mp3?filename=calm-music-loop-197824.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
